@@ -31,7 +31,10 @@ This project answers the following four key business questions:
 
 ---
 
-## Experiment Design
+## Experiment Design  
+Campaign A -> Control Campaign  
+Campaign B -> Test Campaign  
+
 Primary Key Metrics:
  •  Conversion Rate (CR): Number of purchases / Number of impressions or clicks.
 	•  Click-Through Rate (CTR): Number of website clicks / Number of impressions.
@@ -61,27 +64,36 @@ The dataset contains user-level interaction data from both campaigns, including:
 ##  Key Insights
 
 - **Average Purchase Conversion Rate:**  
-  - Campaign A: 11.48%  
-  - Campaign B: 9.23%
-- **Conversion Rate**
-  - Campaign A: 0.0983 
-  - Campaign B: 0.0864
+  - Campaign A: 11.48%    
+  - Campaign B: 9.23%  
+- **Conversion Rate**  
+  - Campaign A: 0.0983   
+  - Campaign B: 0.0864  
+  - Recommendation: Campaign A has a higher conversion rate, indicating that it is more effective in converting visitors into customers.  
 - **Statistical Significance:**  
-  Z-statistic: 11.8387
-  P-value: 0.0000
-  There is a statistically significant difference in conversion rates between Campaign A and Campaign B.
+  Z-statistic: 11.8387  
+  P-value: 0.0000  
+Recommendation: The results are statistically significant, meaning the observed difference in conversion rates between Campaign A and Campaign B is unlikely due to random chance.  
   
-- Campaign A generates $11.04 in revenue for every $1 spent.
-  Campaign B generates $10.17 in revenue per $1 spent.
-  Therefore, Campaign A is more cost-effective.
+-Revenue Per Dollar Spent:  
+ - Campaign A: $11.04  
+ - Campaign B: $10.17  
+Recommendation:This suggests that Campaign A is more efficient in generating revenue.  
 
-- Campaign A - Correlation bw Impression and Purchases: -0.02
-  Campaign B - Correlation bw Impression and Purchases: 0.10
--"We analyzed the relationship between the number of impressions and number of purchases for Campaign A and B. Campaign A showed a negative correlation (r = -0.02), suggesting impressions does not influence purchases. Campaign B had a low correlation (r = 0.10), indicating a weaker link between impressions and purchases. This suggests that Campaign B’s creative or targeting may be more effective at converting impressions into sales."
+- Correlation between Impressions and Purchases:  
+ - Campaign A: -0.02 (almost no correlation)  
+ - Campaign B: 0.10 (slight positive correlation)  
+Recommendation: Campaign B shows a slight positive correlation between impressions and purchases, suggesting it may benefit from optimizing targeting to improve this relationship. However, Campaign A's minimal correlation indicates that the number of impressions has little impact on purchases,
 
-- Campaign A - Correlation between CTR and Purchase Rate: -0.63
-  Campaign B - Correlation between CTR and Purchase Rate: -0.35
-- "We analyzed the relationship between click-through rate (CTR) and purchase behavior for both campaigns. Campaign A showed a moderate negative correlation (r = -0.63), suggesting that higher CTR is not related to more purchases. Campaign B showed a weak negative correlation (r = -0.35), indicating that although users clicked on the ad, it didn’t strongly predict conversions. This may suggest issues in the post-click experience for both Campaigns."
+- Correlation between CTR and Purchase Rate:  
+ - Campaign A: -0.63  
+ - Campaign B: -0.35  
+Recommendation: Both campaigns show a negative correlation between CTR and purchase rate, which indicates that higher click-through rates don’t necessarily correlate with more purchases. This could point to issues such as high click volume but poor conversion on the landing page. It may be beneficial to optimize the landing page or call-to-action for both campaigns.
+
+##  Business Recommendation
+Based on the A/B test results:  
+**Primary Recommendation:** Implement **Control Campaign** as the new default for maximum efficiency and return on investment.  
+**Further Optimization:** Consider **improving Test Campaign** by targeting high-performing impressions or optimizing the conversion funnel.  
 
 ---
 

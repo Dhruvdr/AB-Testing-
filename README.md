@@ -75,26 +75,26 @@ The dataset contains user-level interaction data from both campaigns, including:
   - P-value: 0.0000  
   - Recommendation: The results are statistically significant, meaning the observed difference in conversion rates between Campaign A and Campaign B is unlikely due to random chance.  
   
-- Revenue Per Dollar Spent:  
+- **Revenue Per Dollar Spent:**  
   - Campaign A: $11.04  
   - Campaign B: $10.17  
   - Recommendation:This suggests that Campaign A is more efficient in generating revenue.  
 
-- Correlation between Impressions and Purchases:  
- - Campaign A: -0.02 (almost no correlation)  
- - Campaign B: 0.10 (slight positive correlation)  
- - Recommendation: Campaign B shows a slight positive correlation between impressions and purchases, suggesting it may benefit from optimizing targeting to improve this relationship. However, Campaign A's minimal correlation indicates that the number of impressions has little impact on purchases,
+- **Correlation between Impressions and Purchases:**  
+  - Campaign A: -0.02 (almost no correlation)  
+  - Campaign B: 0.10 (slight positive correlation)
+  - Recommendation: Campaign B shows a slight positive correlation between impressions and purchases, suggesting it may benefit from optimizing targeting to improve this relationship. However, Campaign A's minimal correlation indicates that the number of impressions has little impact on purchases,
 
-- Correlation between CTR and Purchase Rate:  
- - Campaign A: -0.63  
- - Campaign B: -0.35  
- - Recommendation: Both campaigns show a negative correlation between CTR and purchase rate, which indicates that higher click-through rates don’t necessarily correlate with more purchases. This could point to issues such as high click volume but poor conversion on the landing page. It may be beneficial to optimize the landing page or call-to-action for both campaigns.
+- **Correlation between CTR and Purchase Rate:**  
+  - Campaign A: -0.63  
+  - Campaign B: -0.35  
+  - Recommendation: Both campaigns show a negative correlation between CTR and purchase rate, which indicates that higher click-through rates don’t necessarily correlate with more purchases. This could point to issues such as high click volume but poor conversion on the landing page. It may be beneficial to optimize the landing page or call-to-action for both campaigns.
 
 ##  Business Recommendation
 Based on the A/B test results:  
-**Primary Recommendation:** Implement **Control Campaign** as the new default for maximum efficiency and return on investment.  
+- **Primary Recommendation:** Implement **Control Campaign** as the new default for maximum efficiency and return on investment.  
 
-**Further Optimization:** Consider **improving Test Campaign** by targeting high-performing impressions or optimizing the conversion funnel.  
+- **Further Optimization:** Consider **improving Test Campaign** by targeting high-performing impressions or optimizing the conversion funnel.  
 
 ---
 

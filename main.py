@@ -188,8 +188,6 @@ B_corr = B_df['# of Impressions'].corr(B_df['# of Purchase'])
 # plt.tight_layout(rect=[0, 0, 1, 0.95])
 # plt.show()
 
-# "We analyzed the relationship between the number of impressions and number of purchases for Campaign A and B. Campaign A showed a negative correlation (r = -0.02), suggesting impressions does not influence purchases. Campaign B had a low correlation (r = 0.10), indicating a weaker link between impressions and purchases. This suggests that Campaign B’s creative or targeting may be more effective at converting impressions into sales."
-
 #                           QUESTION 4
 
 # Calculate CTR and Purchase Rate
@@ -232,5 +230,3 @@ print(f"Campaign B - Correlation between CTR and Purchase Rate: {B_corr2:.2f}")
 # plt.suptitle('CTR vs Purchase Rate Across Campaigns', fontsize=16)
 # plt.tight_layout(rect=[0,0,1,0.95])
 # plt.show()
-
-# "We analyzed the relationship between click-through rate (CTR) and purchase behavior for both campaigns. Campaign A showed a moderate negative correlation (r = -0.63), suggesting that higher CTR is not related to more purchases. Campaign B showed a weak negative correlation (r = -0.35), indicating that although users clicked on the ad, it didn’t strongly predict conversions. This may suggest issues in the post-click experience for both Campaigns."

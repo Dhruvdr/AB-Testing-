@@ -1,4 +1,4 @@
-# 📈 Marketing Campaign Optimization: A/B Testing & Predictive Insights
+# Marketing Campaign Optimization: A/B Testing & Predictive Insights
 > **Business Case:** Evaluating Bidding Strategies to Maximize ROAS and Conversion Efficiency.
 
 ## 📌 Project Overview

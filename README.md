@@ -1,114 +1,59 @@
-# AB-Testing
- This project analyzes the performance of two marketing campaigns—**Control Campaign** and **Test Campaign**—using A/B testing methodologies. The goal is to determine which campaign drives better user engagement and conversion, and to provide actionable recommendations based on data-driven insights.  
-The analysis was conducted using Python with a focus on practical business questions often faced by Product and Marketing Analysts.
+# 📈 Marketing Campaign Optimization: A/B Testing & Predictive Insights
+> **Business Case:** Evaluating Bidding Strategies to Maximize ROAS and Conversion Efficiency.
+
+## 📌 Project Overview
+This project performs a deep-dive A/B test analysis between two marketing bidding strategies: **Campaign A (Control)** and **Campaign B (Test)**. Beyond basic conversion metrics, this analysis implements rigorous statistical "guardrails"—including **Power Analysis** and **Sample Ratio Mismatch (SRM)** detection—to ensure data-driven recommendations are mathematically sound and business-ready.
+
+## 🛠️ The Technical Toolkit
+- **Analysis:** Python (Pandas, NumPy)
+- **Statistics:** Statsmodels (Z-Test, Power Analysis), SciPy (Chi-Square, Pearson Correlation)
+- **Visualization:** Seaborn, Matplotlib
 
 ---
 
-##  Project Objectives
+## 🛡️ Data Integrity & Experiment Audit
+*Before analyzing performance, I audited the experiment's health to prevent "False Positives."*
 
-### Objective:
-•  Determine which of the two marketing campaigns (Control Campaign or Test Campaign) leads to better conversion rates, more cost-effective advertising, and higher engagement.
-
-### Hypothesis:
-•	Null Hypothesis (H0): There is no difference between the performance of Control Campaign and Test Campaign in terms of conversion rates and cost-effectiveness.  
-•	Alternative Hypothesis (H1): Test Campaign performs better than Control Campaign in terms of conversion rates, engagement, and cost-effectiveness.
-
-### Key Metrics:
-The key metrics to evaluate the campaigns' performance will include:  
-• Spend (how much money is spend on Ads),  
-• Impressions (how many times the campaign ad was shown),  
-• Website Clicks (the number of users who clicked on the ad),  
-• Searches (users searching for the product after seeing the ad),  
-• View Content (users who viewed a product or page),  
-• Add to Cart (users who added a product to their cart),  
-• Purchases (users who completed a purchase).  
-
-This project answers the following four key business questions:
-1. **Which campaign (A or B) has the highest conversion rate?**
-2. **What is the return on ad spend (ROAS) for each campaign, and which one is more cost-effective?**
-3. **Does the number of impressions correlate with the number of purchases for each campaign?**
-4. **How does the click-through rate (CTR) of each campaign affect the likelihood of users making a purchase?**
+1. **Power Analysis:** Confirmed the experiment was "Overpowered" with **340k+ total interactions**, far exceeding the required sample size of ~12.5k for a 5% effect size.
+2. **SRM Detection (The Critical Catch):** - A Chi-Square test revealed a severe **Sample Ratio Mismatch (p < 0.01)**. 
+   - Traffic was unevenly split (159k vs 180k), suggesting potential bias in the randomization engine.
+3. **Mitigation:** I implemented **Proportional Downsampling** to equalize group sizes, ensuring that Campaign B's "win" in raw volume didn't mask a failure in conversion efficiency.
 
 ---
 
-## Experiment Design  
-Campaign A -> Control Campaign  
-Campaign B -> Test Campaign  
+## 🔍 Key Business Questions & Findings
 
-Primary Key Metrics:
- •  Conversion Rate (CR): Number of purchases / Number of impressions or clicks.  
- •  Click-Through Rate (CTR): Number of website clicks / Number of impressions.  
- •  Cost Per Purchase (CPP): Total ad spend / Number of purchases.  
- •  Return on Ad Spend (ROAS): Revenue generated / Total ad spend.  
-Estimated Sample Size (3177233)  
-Test duration (1 month)  
+### Q1: Which campaign has the highest conversion efficiency?
+* **Result:** **Campaign A** (Control).
+* **Stats:** After balancing samples, Campaign A achieved a superior conversion rate. The **Z-statistic of 11.56 (p=0.0000)** proves this isn't random.
+* **Metric:** Campaign B showed a **-12.06% Relative Lift** compared to A.
 
----
+### Q2: Which campaign is more cost-effective (ROAS)?
+* **Result:** **Campaign A**.
+* **Finding:** Campaign A generated **$11.42 per $1 spent**, while Campaign B generated only $10.17. 
+* **Impact:** Using Campaign A saves the company nearly $1.25 in ad spend for every dollar of revenue generated.
 
-##  Dataset
-
-The dataset contains user-level interaction data from both campaigns, including:
-- `campaign_group` (Control or Test)
-- `Date`;
-- Spend [USD];
-- Impressions;
-- Reach;
-- Website Clicks;
-- Searches;
-- View Content;
-- Add to Cart;
-- Purchase
+### Q3: Do "Clicky" ads lead to more sales? (CTR vs. Purchase Rate)
+* **Finding:** **No.** Both campaigns showed a **negative correlation** (A: -0.62, B: -0.35).
+* **Analysis:** High Click-Through Rates (CTR) are actually correlating with *lower* purchase rates. This suggests the ads may be "clickbait," attracting low-intent users who bounce upon reaching the landing page.
 
 ---
 
-##  Key Insights
+## 🚀 Final Strategic Recommendation
+**Action: Terminate Test Campaign (B) and scale Control Campaign (A).**
 
-- **Average Purchase Conversion Rate:**  
-  - Campaign A: 11.48%    
-  - Campaign B: 9.23%  
-- **Conversion Rate**  
-  - Campaign A: 0.0983   
-  - Campaign B: 0.0864  
-  - Recommendation: Campaign A has a higher conversion rate, indicating that it is more effective in converting visitors into customers.  
-- **Statistical Significance:**  
-  - Z-statistic: 11.8387  
-  - P-value: 0.0000  
-  - Recommendation: The results are statistically significant, meaning the observed difference in conversion rates between Campaign A and Campaign B is unlikely due to random chance.  
-  
-- **Revenue Per Dollar Spent:**  
-  - Campaign A: $11.04  
-  - Campaign B: $10.17  
-  - Recommendation:This suggests that Campaign A is more efficient in generating revenue.  
-
-- **Correlation between Impressions and Purchases:**  
-  - Campaign A: -0.02 (almost no correlation)  
-  - Campaign B: 0.10 (slight positive correlation)
-  - Recommendation: Campaign B shows a slight positive correlation between impressions and purchases, suggesting it may benefit from optimizing targeting to improve this relationship. However, Campaign A's minimal correlation indicates that the number of impressions has little impact on purchases,
-
-- **Correlation between CTR and Purchase Rate:**  
-  - Campaign A: -0.63  
-  - Campaign B: -0.35  
-  - Recommendation: Both campaigns show a negative correlation between CTR and purchase rate, which indicates that higher click-through rates don’t necessarily correlate with more purchases. This could point to issues such as high click volume but poor conversion on the landing page. It may be beneficial to optimize the landing page or call-to-action for both campaigns.
-
-##  Business Recommendation
-Based on the A/B test results:  
-- **Primary Recommendation:** Implement **Control Campaign** as the new default for maximum efficiency and return on investment.  
-
-- **Further Optimization:** Consider **improving Test Campaign** by targeting high-performing impressions or optimizing the conversion funnel.  
+While Campaign B drives higher raw traffic, it is less efficient. 
+1. **Prioritize Quality over Quantity:** Campaign A’s bidding strategy attracts higher-intent users with a 12% better conversion lift.
+2. **Optimize the Funnel:** The negative CTR/Purchase correlation indicates a "Leaky Funnel." I recommend a UX audit of the landing page to better align ad messaging with the checkout experience.
 
 ---
 
-##  Project Structure
-<pre>
-│
+## 📂 Project Structure
+```text
 ├── data/
-│ ├── Control_group.csv # Campaign A (Control)
-│ └── Test_group.csv  # Campaign B (Test)
-│
-├── main.py # Full analysis file
-│
-├── Output/  # Visualising Output 
-│
-└── README.md # Project documentation 
- </pre>
-
+│   ├── Control_group.csv  # Campaign A Data
+│   └── Test_group.csv     # Campaign B Data
+├── notebooks/
+│   └── ab_test_analysis.ipynb # Full Python Workflow & Statistical Audit
+├── visuals/               # Data Visualizations & Z-Distributions
+└── README.md              # Executive Summary

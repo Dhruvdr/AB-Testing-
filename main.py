@@ -6,21 +6,21 @@ from statsmodels.stats.proportion import proportions_ztest
 from statsmodels.stats.power import NormalIndPower
 from scipy.stats import norm, chisquare
 
-# --- 1. DATA LOADING & CLEANING ---
+# 1. Data Loading
 A_df = pd.read_csv(r"D:\DEVELOPMENT\PROJECTS\AB Testing\data\control_group.csv", sep=';') 
 B_df = pd.read_csv(r"D:\DEVELOPMENT\PROJECTS\AB Testing\data\test_group.csv", sep=';') 
 
-# Handling missing values (Data Integrity)
+# Handling missing values
 A_df = A_df.fillna(A_df.mean(numeric_only=True))
 B_df = B_df.fillna(B_df.mean(numeric_only=True))
 
-# Defining core metrics for both groups
+# core metrics
 total_purchases_A = A_df['# of Purchase'].sum()
 total_clicks_A = A_df['# of Website Clicks'].sum()
 total_purchases_B = B_df['# of Purchase'].sum()
 total_clicks_B = B_df['# of Website Clicks'].sum()
 
-# --- 2. EXPERIMENT AUDIT (The Detection) ---
+# --- 2. EXPERIMENT AUDIT  ---
 # Check Sample Ratio Mismatch (SRM)
 observed_traffic = [total_clicks_A, total_clicks_B]
 total_traffic = sum(observed_traffic)
@@ -34,7 +34,7 @@ if srm_p_value < 0.01:
 else:
     print(f"PASSED: No SRM detected (p={srm_p_value:.4f}).")
 
-# --- 3. MITIGATION & BALANCED Z-TEST (The Simulation) ---
+# --- 3. MITIGATION & BALANCED Z-TEST ---
 # Proportional downsampling to mitigate bias
 scaling_factor = total_clicks_A / total_clicks_B
 balanced_purchases_B = round(total_purchases_B * scaling_factor)
